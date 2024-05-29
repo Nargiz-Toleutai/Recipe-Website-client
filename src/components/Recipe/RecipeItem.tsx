@@ -1,4 +1,5 @@
-import StarRating from "../StarsRating";
+import StarRating from "../IconMultiplier";
+import RecipeButton from "../buttons/RecipeButton";
 
 export interface RecipeItemProps {
   id: number;
@@ -7,16 +8,10 @@ export interface RecipeItemProps {
   image: string;
 }
 
-const RecipeItem = ({ name, rating, image }: RecipeItemProps) => {
+const RecipeItem = ({ name, rating, image, id }: RecipeItemProps) => {
   return (
     <li>
-      <div className="recipe-item-img-block">
-        <img src={image} alt={`${name}-img`} />
-      </div>
-      <div className="recipe-item-info-block">
-        <h3>{name}</h3>
-        <StarRating rating={rating} />
-      </div>
+      <RecipeButton id={id} name={name} rating={rating} image={image} />
     </li>
   );
 };

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import SearchInput from "../SearchInput";
 import RecipeItem from "./RecipeItem";
+import AddRecipeButton from "../buttons/AddRecipeButton";
 
-interface Recipe {
+export interface Recipe {
   id: number;
   name: string;
   serves?: number;
   preptime?: number;
-  image?: string;
-  comments: Comment[];
+  image_URL?: string;
+  comments?: Comment[];
+  categories?: Category[];
+  instructions?: string;
+  ingredients?: string;
 }
 
 interface Comment {
@@ -19,11 +23,12 @@ interface Category {
   id: number;
   name: string;
   icon: string;
+  onClick: () => void;
 }
 
-const CategoryItem = ({ name, icon }: Category) => {
+const CategoryItem = ({ name, icon, onClick }: Category) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <label>{icon}</label>
       <h3>{name}</h3>
     </button>
@@ -42,6 +47,7 @@ export const calculateAverageRating = (comments: Comment[]): number => {
 const RecipeList = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -49,6 +55,7 @@ const RecipeList = () => {
         const result = await fetch("http://localhost:3001/recipes");
         const recipesData = await result.json();
         setRecipes(recipesData);
+        setFilteredRecipes(recipesData);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -68,6 +75,15 @@ const RecipeList = () => {
     getCategories();
   }, []);
 
+  const filterByCategory = (categoryName: string) => {
+    const filteredCategory = recipes.filter((recipe) =>
+      recipe.categories?.some(
+        (recipeCategory) => recipeCategory.name === categoryName
+      )
+    );
+    setFilteredRecipes(filteredCategory);
+  };
+
   return (
     <div className="home-page">
       <div className="header">
@@ -83,21 +99,24 @@ const RecipeList = () => {
               name={category.name}
               icon={category.icon}
               id={category.id}
+              onClick={() => filterByCategory(category.name)}
             />
           ))}
         </div>
         <div className="recipes">
           <SearchInput defaultValue={null} />
           <ul>
-            {recipes.map((recipe) => (
+            {filteredRecipes.map((recipe) => (
               <RecipeItem
                 key={recipe.id}
                 name={recipe.name}
-                rating={calculateAverageRating(recipe.comments)}
+                rating={calculateAverageRating(
+                  recipe.comments ? recipe.comments : []
+                )}
                 id={recipe.id}
                 image={
-                  recipe.image
-                    ? recipe.image
+                  recipe.image_URL
+                    ? recipe.image_URL
                     : "/backgroundImages/img-not-found.jpg"
                 }
               />
@@ -106,10 +125,7 @@ const RecipeList = () => {
         </div>
       </div>
       <div className="footer">
-        <button>
-          <h1>Add New Recipe</h1>
-          <img src="/buttonImage/add-new-recipe-button-img.svg" />
-        </button>
+        <AddRecipeButton />
       </div>
     </div>
   );
