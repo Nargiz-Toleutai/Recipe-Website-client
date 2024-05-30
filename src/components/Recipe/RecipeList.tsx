@@ -48,6 +48,8 @@ const RecipeList = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
+  const [searchQuery, setSearchQuery] = useState(recipes);
+  const [filteredData, setFilteredData] = useState<Recipe[]>([]);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -84,6 +86,18 @@ const RecipeList = () => {
     setFilteredRecipes(filteredCategory);
   };
 
+  // const handleInputChange = (e) => {
+  //   const query = e.target.value;
+  //   setSearchQuery(query);
+
+  //   const filtered = recipes.filter((recipe) =>
+  //     recipe.name.toLowerCase().includes(query.toLowerCase())
+  //   );
+  //   setFilteredData(filtered);
+  // };
+
+  console.log(filteredData);
+
   return (
     <div className="home-page">
       <div className="header">
@@ -104,7 +118,18 @@ const RecipeList = () => {
           ))}
         </div>
         <div className="recipes">
-          <SearchInput defaultValue={null} />
+          {/* <input
+            type="text"
+            value={searchQuery}
+            onChange={handleInputChange}
+            placeholder="Search For Recipes..."
+          />
+          <ul>
+            {filteredData.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul> */}
+
           <ul>
             {filteredRecipes.map((recipe) => (
               <RecipeItem

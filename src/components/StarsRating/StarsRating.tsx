@@ -1,30 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 const StarRating = () => {
+  const [rating, setRating] = useState<number>(0);
   return (
     <div className="stars-rating">
+      <p>{rating}</p>
       <h4>Rating</h4>
       <div className="stars">
-        <input type="radio" id="st1" value="1" />
-        <label htmlFor="st1">
-          <FontAwesomeIcon icon="star" />
-        </label>
-        <input type="radio" id="st2" value="2" />
-        <label htmlFor="st2">
-          <FontAwesomeIcon icon="star" />
-        </label>
-        <input type="radio" id="st3" value="3" />
-        <label htmlFor="st3">
-          <FontAwesomeIcon icon="star" />
-        </label>
-        <input type="radio" id="st4" value="4" />
-        <label htmlFor="st4">
-          <FontAwesomeIcon icon="star" />
-        </label>
-        <input type="radio" id="st5" value="5" />
-        <label htmlFor="st5">
-          <FontAwesomeIcon icon="star" />
-        </label>
+        {Array(5)
+          .fill(0)
+          .map((_, index) => {
+            return (
+              <>
+                <input
+                  type="radio"
+                  name="star-rating"
+                  id={`st${index}`}
+                  value={index + 1}
+                  onChange={(e) => {
+                    setRating(index + 1);
+                  }}
+                />
+                <label htmlFor={`st${index}`}>
+                  <FontAwesomeIcon icon="star" />
+                </label>
+              </>
+            );
+          })}
       </div>
     </div>
   );
