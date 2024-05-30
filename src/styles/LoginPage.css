@@ -63,3 +63,12 @@ label {
   font-size: 16px;
   margin-bottom: 5px;
 }
+
+button {
+  border-radius: 300px;
+  background: #febd2f;
+  border: none;
+  width: 2rem;
+  height: 28px;
+  flex-shrink: 0;
+}

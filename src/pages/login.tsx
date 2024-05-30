@@ -10,6 +10,8 @@ const LoginPage = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData);
 
+    console.log("data", data);
+
     const result = await fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
@@ -35,6 +37,7 @@ const LoginPage = () => {
           onChange={(event) => setUserName(event.target.value)}
           value={userName}
           className="input"
+          name="username"
         />
         <label>Password</label>
         <input
@@ -43,6 +46,7 @@ const LoginPage = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           className="input"
+          name="password"
         />
         <button type="submit">Login</button>
       </form>
