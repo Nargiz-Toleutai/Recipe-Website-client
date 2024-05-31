@@ -1,8 +1,10 @@
 import AddComment from "@/components/AddComment";
+import CommentCard from "@/components/CommentCard";
 import IconMultiplier from "@/components/IconMultiplier";
+import NavigationBar from "@/components/NavBar/NavBar";
 import { Recipe } from "@/components/Recipe/RecipeList";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // {recipe.preptime} need to change format (1h 15min)
 
@@ -11,18 +13,19 @@ const RecipeDetails = () => {
   const id = router.query.id;
   const [recipe, setRecipe] = useState<Recipe | null>(null);
 
+  const getRecipeFromApi = useCallback(async () => {
+    const response = await fetch(`http://localhost:3001/recipes/${id}`);
+    const data = await response.json();
+    console.log("FETCHED RECIPE AGAIN!", data);
+    setRecipe(data);
+  }, [id]);
+
   useEffect(() => {
     if (id === undefined) {
       return;
     }
-    const getRecipeFromApi = async () => {
-      const response = await fetch(`http://localhost:3001/recipes/${id}`);
-      const data = await response.json();
-      setRecipe(data);
-    };
-
     getRecipeFromApi();
-  }, [id]);
+  }, [id, getRecipeFromApi]);
 
   if (!recipe) {
     return <div>Loading ...</div>;
@@ -32,6 +35,7 @@ const RecipeDetails = () => {
 
   return (
     <div className="recipe-page">
+      <NavigationBar />
       <div className="header">
         <img src={recipe.image_URL} />
         <h1>{recipe.name}</h1>
@@ -61,8 +65,10 @@ const RecipeDetails = () => {
           <p>{recipe.ingredients}</p>
         </div>
       </div>
-      <AddComment />
-      <div className="footer"></div>
+      <AddComment recipeId={recipe.id} fetchRecipe={getRecipeFromApi} />
+      <div className="footer">
+        {recipe.comments?.length && <CommentCard comments={recipe.comments} />}
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchInput from "../SearchInput";
 import RecipeItem from "./RecipeItem";
 import AddRecipeButton from "../buttons/AddRecipeButton";
+import NavigationBar from "../NavBar/NavBar";
 
 export interface Recipe {
   id: number;
@@ -15,7 +16,11 @@ export interface Recipe {
   ingredients?: string;
 }
 
-interface Comment {
+export interface Comment {
+  id: number;
+  name: string;
+  review: string;
+  createdAt: Date;
   rating: number;
 }
 
@@ -35,21 +40,11 @@ const CategoryItem = ({ name, icon, onClick }: Category) => {
   );
 };
 
-export const calculateAverageRating = (comments: Comment[]): number => {
-  if (comments.length === 0) return 0;
-  const totalRating = comments.reduce(
-    (acc, comment) => acc + comment.rating,
-    0
-  );
-  return totalRating / comments.length;
-};
-
-const RecipeList = () => {
+export const RecipeList = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
-  const [searchQuery, setSearchQuery] = useState(recipes);
-  const [filteredData, setFilteredData] = useState<Recipe[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -86,20 +81,17 @@ const RecipeList = () => {
     setFilteredRecipes(filteredCategory);
   };
 
-  // const handleInputChange = (e) => {
-  //   const query = e.target.value;
-  //   setSearchQuery(query);
-
-  //   const filtered = recipes.filter((recipe) =>
-  //     recipe.name.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   setFilteredData(filtered);
-  // };
-
-  console.log(filteredData);
+  const handleInputChange = (query: string) => {
+    setSearchQuery(query);
+    const filtered = recipes.filter((recipe) =>
+      recipe.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
+  };
 
   return (
     <div className="home-page">
+      <NavigationBar />
       <div className="header">
         <h1>Home Chef Recipes</h1>
         <img src="/backgroundImages/home-page-img.svg" alt="home-page-img" />
@@ -118,35 +110,7 @@ const RecipeList = () => {
           ))}
         </div>
         <div className="recipes">
-          {/* <input
-            type="text"
-            value={searchQuery}
-            onChange={handleInputChange}
-            placeholder="Search For Recipes..."
-          />
-          <ul>
-            {filteredData.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul> */}
-
-          <ul>
-            {filteredRecipes.map((recipe) => (
-              <RecipeItem
-                key={recipe.id}
-                name={recipe.name}
-                rating={calculateAverageRating(
-                  recipe.comments ? recipe.comments : []
-                )}
-                id={recipe.id}
-                image={
-                  recipe.image_URL
-                    ? recipe.image_URL
-                    : "/backgroundImages/img-not-found.jpg"
-                }
-              />
-            ))}
-          </ul>
+          <SearchInput recipes={filteredRecipes} onSearch={handleInputChange} />
         </div>
       </div>
       <div className="footer">

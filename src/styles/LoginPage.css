@@ -12,6 +12,7 @@
   top: 0;
   left: 0;
   z-index: -1;
+  object-fit: cover;
 }
 
 .login-window {
@@ -64,11 +65,11 @@ label {
   margin-bottom: 5px;
 }
 
-button {
+.login-button {
   border-radius: 300px;
   background: #febd2f;
   border: none;
-  width: 2rem;
+  width: 50px;
   height: 28px;
-  flex-shrink: 0;
+  margin-top: 36px;
 }

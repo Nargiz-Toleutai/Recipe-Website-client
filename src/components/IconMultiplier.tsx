@@ -4,7 +4,9 @@ interface IconMultiplierProps {
 }
 
 const IconMultiplier = ({ amount, icon }: IconMultiplierProps) => {
-  const arr = Array(amount).fill(0);
+  const validatedAmount = Math.max(0, Math.min(Math.floor(amount), 5));
+
+  const arr = Array.from({ length: validatedAmount });
 
   return (
     <>

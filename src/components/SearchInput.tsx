@@ -1,38 +1,62 @@
-import { useRouter } from "next/navigation";
 import { useState, ChangeEvent } from "react";
+import { Recipe } from "./Recipe/RecipeList";
+import RecipeItem from "./Recipe/RecipeItem";
+import { Comment } from "./Recipe/RecipeList";
 
 interface SearchInputProps {
-  defaultValue: string | null;
+  recipes: Recipe[];
+  onSearch: (query: string) => void;
 }
 
-const SearchInput = ({ defaultValue }: SearchInputProps) => {
-  const router = useRouter();
-  const [inputValue, setValue] = useState(defaultValue);
+const calculateAverageRating = (comments: Comment[]): number => {
+  if (comments.length === 0) return 0;
+  const totalRating = comments.reduce(
+    (acc, comment) => acc + comment.rating,
+    0
+  );
+  return totalRating / comments.length;
+};
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    setValue(inputValue);
-  };
-
-  const handleSearch = () => {
-    if (inputValue) return router.push(`/?q=${inputValue}`);
-    if (!inputValue) return router.push("/");
-  };
-
-  const handleKeyPress = (event: { key: any }) => {
-    if (event.key === "Enter") return handleSearch();
-  };
+const SearchInput = ({ recipes }: SearchInputProps) => {
+  const [inputValue, setValue] = useState<string>("");
 
   return (
-    <div className="search-input">
+    <div>
       <input
-        id="inputId"
+        className="search-input"
         type="text"
         placeholder="Search For Recipes..."
-        value={inputValue ?? ""}
-        onChange={handleChange}
-        onKeyDown={handleKeyPress}
+        value={inputValue}
+        onChange={(e) => setValue(e.target.value)}
       />
+
+      {recipes
+        .filter((recipe) => {
+          if (recipe.name.toLowerCase().includes(inputValue.toLowerCase())) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .map((recipe) => (
+          <ul key={recipe.id}>
+            <RecipeItem
+              key={recipe.id}
+              name={recipe.name}
+              rating={
+                recipe.comments?.length
+                  ? calculateAverageRating(recipe.comments)
+                  : 0
+              }
+              id={recipe.id}
+              image={
+                recipe.image_URL
+                  ? recipe.image_URL
+                  : "/backgroundImages/img-not-found.jpg"
+              }
+            />
+          </ul>
+        ))}
     </div>
   );
 };

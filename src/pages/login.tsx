@@ -1,6 +1,21 @@
-import { FormEvent, useState } from "react";
+import NavigationBar from "@/components/NavBar/NavBar";
+import { useRouter } from "next/router";
+import { FormEvent, useEffect, useState } from "react";
 
-const LoginPage = () => {
+interface User {
+  id: number;
+}
+
+const LoginPage = ({ id }: User) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const tokenFromStorage = localStorage.getItem("token");
+    if (tokenFromStorage !== null) {
+      router.push("/");
+    }
+  }, [router]);
+
   const [userName, setUserName] = useState<string>();
   const [password, setPassword] = useState<string>();
 
@@ -19,11 +34,16 @@ const LoginPage = () => {
       },
       body: JSON.stringify(data),
     });
-    await result.json();
+    const json = await result.json();
+    if (json.token) {
+      localStorage.setItem("token", json.token);
+      router.push(`/dashboard/${id}`);
+    }
   };
 
   return (
     <div className="login-page">
+      <NavigationBar />
       <img
         src="/backgroundImages/login-page-background-img.svg"
         alt="Login Page Background"
@@ -48,7 +68,9 @@ const LoginPage = () => {
           className="input"
           name="password"
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="login-button">
+          Login
+        </button>
       </form>
     </div>
   );
