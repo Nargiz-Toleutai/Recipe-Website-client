@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from "react";
 import { Recipe } from "./Recipe/RecipeList";
 import RecipeItem from "./Recipe/RecipeItem";
 import { Comment } from "./Recipe/RecipeList";
+import RecipeCard from "./buttons/RecipeCard";
 
 interface SearchInputProps {
   recipes: Recipe[];
@@ -39,23 +40,21 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
             }
           })
           .map((recipe) => (
-            <ul key={recipe.id}>
-              <RecipeItem
-                key={recipe.id}
-                name={recipe.name}
-                rating={
-                  recipe.comments?.length
-                    ? calculateAverageRating(recipe.comments)
-                    : 0
-                }
-                id={recipe.id}
-                image={
-                  recipe.image_URL
-                    ? recipe.image_URL
-                    : "/backgroundImages/img-not-found.jpg"
-                }
-              />
-            </ul>
+            <RecipeItem
+              key={recipe.id}
+              name={recipe.name}
+              rating={
+                recipe.comments?.length
+                  ? calculateAverageRating(recipe.comments)
+                  : 0
+              }
+              id={recipe.id}
+              image={
+                recipe.image_URL
+                  ? recipe.image_URL
+                  : "/backgroundImages/img-not-found.jpg"
+              }
+            />
           ))}
       </div>
     </>

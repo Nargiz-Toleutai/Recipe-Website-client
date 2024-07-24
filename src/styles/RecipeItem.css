@@ -1,0 +1,25 @@
+.recipe-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.recipe-img img {
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.recipe-item-info-block h3 {
+  font-weight: 700;
+}
+
+.recipe-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 20px;
+  overflow: hidden;
+}

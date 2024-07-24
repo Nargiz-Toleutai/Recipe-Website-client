@@ -1,5 +1,5 @@
 import Link from "next/link";
-import RecipeButton from "../buttons/RecipeCard";
+import RecipeCard from "../buttons/RecipeCard";
 import { useRouter } from "next/router";
 
 // interface RecipeComment {
@@ -42,8 +42,8 @@ const RecipeItem = ({
   };
 
   return (
-    <li>
-      <RecipeButton
+    <div className="recipe-data">
+      <RecipeCard
         id={id}
         name={name}
         rating={rating}
@@ -57,7 +57,7 @@ const RecipeItem = ({
           <button>Delete</button>
         </>
       )}
-    </li>
+    </div>
   );
 };
 
