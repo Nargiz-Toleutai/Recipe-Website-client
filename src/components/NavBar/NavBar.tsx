@@ -10,28 +10,33 @@ const NavigationBar = () => {
   }, []);
 
   return (
-    <ul className="navigation-container">
+    <div className="navigation-container">
       <h1>🥘 HomeChefRecipes</h1>
-      <li className="navigation-item">
-        <Link href="/">Home</Link>
-      </li>
-      {getToken === null ? (
+      <ul className="navigation-items">
         <li className="navigation-item">
-          <Link href="/login">Login</Link>
+          <Link href="/">Home</Link>
         </li>
-      ) : (
-        <button
-          onClick={() => {
-            setToken(null);
-            localStorage.removeItem("token");
-          }}
-        >
+
+        {getToken === null ? (
           <li className="navigation-item">
-            <Link href="/login">Log out</Link>
+            <Link href="/login">Login</Link>
           </li>
-        </button>
-      )}
-    </ul>
+        ) : (
+          <li className="navigation-item">
+            <Link href="/">
+              <button
+                onClick={() => {
+                  setToken(null);
+                  localStorage.removeItem("token");
+                }}
+              >
+                Log out
+              </button>
+            </Link>
+          </li>
+        )}
+      </ul>
+    </div>
   );
 };
 

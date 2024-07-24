@@ -90,31 +90,21 @@ export const RecipeList = () => {
   };
 
   return (
-    <div className="home-page">
-      <NavigationBar />
-      <div className="header">
-        <h1>Home Chef Recipes</h1>
-        <img src="/backgroundImages/home-page-img.svg" alt="home-page-img" />
+    <div className="recipes-list">
+      <div className="categories">
+        <h2>Recipes</h2>
+        {categories.map((category) => (
+          <CategoryItem
+            key={category.id}
+            name={category.name}
+            icon={category.icon}
+            id={category.id}
+            onClick={() => filterByCategory(category.name)}
+          />
+        ))}
       </div>
-      <div className="body">
-        <div className="categories">
-          <h2>Recipes</h2>
-          {categories.map((category) => (
-            <CategoryItem
-              key={category.id}
-              name={category.name}
-              icon={category.icon}
-              id={category.id}
-              onClick={() => filterByCategory(category.name)}
-            />
-          ))}
-        </div>
-        <div className="recipes">
-          <SearchInput recipes={filteredRecipes} onSearch={handleInputChange} />
-        </div>
-      </div>
-      <div className="footer">
-        <AddRecipeButton />
+      <div className="recipes">
+        <SearchInput recipes={filteredRecipes} onSearch={handleInputChange} />
       </div>
     </div>
   );

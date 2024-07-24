@@ -2,6 +2,9 @@ import "@/styles/globals.css";
 import "@/styles/StarsRating.css";
 import "@/styles/LoginPage.css";
 import "@/styles/AddComment.css";
+import "@/styles/Navigation.css";
+import "@/styles/HomePage.css";
+import "@/styles/RecipeList.css";
 import "../fontAwesome";
 import type { AppProps } from "next/app";
 

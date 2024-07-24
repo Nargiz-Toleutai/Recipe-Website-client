@@ -1,0 +1,7 @@
+.recipes-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 123px 104px 123px;
+}

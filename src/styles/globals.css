@@ -1,1 +1,13 @@
+body {
+  font-family: Serif;
+  color: black;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 
+.layout {
+  position: relative;
+  width: 100%;
+}

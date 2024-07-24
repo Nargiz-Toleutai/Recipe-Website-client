@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { RecipeItemProps } from "./../Recipe/RecipeItem";
+import { RecipeItemProps } from "../Recipe/RecipeItem";
 import IconMultiplier from "../IconMultiplier";
 
-const RecipeButton = ({
+const RecipeCard = ({
   id,
   image,
   name,
@@ -11,14 +11,14 @@ const RecipeButton = ({
   serves,
 }: RecipeItemProps) => {
   return (
-    <Link href={`/recipes/${id}`} className="recipe-button">
+    <Link href={`/recipes/${id}`}>
       <div className="recipe-item-info-block">
         <h3>{name}</h3>
         <IconMultiplier amount={rating} icon={"/review-star.svg"} />
       </div>
       <img src={image} alt={`${name}-img`} />
       {preptime && <div>Prep Time {preptime}</div>}
-      {serves && (
+      {serves !== undefined && (
         <div>
           Serves <IconMultiplier amount={serves} icon={"/serves.svg"} />
         </div>
@@ -27,4 +27,4 @@ const RecipeButton = ({
   );
 };
 
-export default RecipeButton;
+export default RecipeCard;

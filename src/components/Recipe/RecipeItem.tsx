@@ -1,5 +1,5 @@
 import Link from "next/link";
-import RecipeButton from "../buttons/RecipeButton";
+import RecipeButton from "../buttons/RecipeCard";
 import { useRouter } from "next/router";
 
 // interface RecipeComment {
