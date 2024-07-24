@@ -21,7 +21,7 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
   const [inputValue, setValue] = useState<string>("");
 
   return (
-    <div>
+    <>
       <input
         className="search-input"
         type="text"
@@ -29,35 +29,36 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
         value={inputValue}
         onChange={(e) => setValue(e.target.value)}
       />
-
-      {recipes
-        .filter((recipe) => {
-          if (recipe.name.toLowerCase().includes(inputValue.toLowerCase())) {
-            return true;
-          } else {
-            return false;
-          }
-        })
-        .map((recipe) => (
-          <ul key={recipe.id}>
-            <RecipeItem
-              key={recipe.id}
-              name={recipe.name}
-              rating={
-                recipe.comments?.length
-                  ? calculateAverageRating(recipe.comments)
-                  : 0
-              }
-              id={recipe.id}
-              image={
-                recipe.image_URL
-                  ? recipe.image_URL
-                  : "/backgroundImages/img-not-found.jpg"
-              }
-            />
-          </ul>
-        ))}
-    </div>
+      <div className="recipes-body">
+        {recipes
+          .filter((recipe) => {
+            if (recipe.name.toLowerCase().includes(inputValue.toLowerCase())) {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((recipe) => (
+            <ul key={recipe.id}>
+              <RecipeItem
+                key={recipe.id}
+                name={recipe.name}
+                rating={
+                  recipe.comments?.length
+                    ? calculateAverageRating(recipe.comments)
+                    : 0
+                }
+                id={recipe.id}
+                image={
+                  recipe.image_URL
+                    ? recipe.image_URL
+                    : "/backgroundImages/img-not-found.jpg"
+                }
+              />
+            </ul>
+          ))}
+      </div>
+    </>
   );
 };
 

@@ -5,7 +5,7 @@
 }
 
 .header img {
-  width: auto;
+  width: 100%;
   height: auto;
 }
 
@@ -16,6 +16,10 @@
   transform: translate(-50%, -50%);
   margin: 0;
   padding: 0;
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .footer {

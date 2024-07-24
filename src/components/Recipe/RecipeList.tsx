@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchInput from "../SearchInput";
-import RecipeItem from "./RecipeItem";
-import AddRecipeButton from "../buttons/AddRecipeButton";
-import NavigationBar from "../NavBar/NavBar";
+
+import CategoryItem, { Category } from "../CategoryItem";
 
 export interface Recipe {
   id: number;
@@ -24,27 +23,12 @@ export interface Comment {
   rating: number;
 }
 
-interface Category {
-  id: number;
-  name: string;
-  icon: string;
-  onClick: () => void;
-}
-
-const CategoryItem = ({ name, icon, onClick }: Category) => {
-  return (
-    <button onClick={onClick}>
-      <label>{icon}</label>
-      <h3>{name}</h3>
-    </button>
-  );
-};
-
-export const RecipeList = () => {
+const RecipeList = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -73,6 +57,7 @@ export const RecipeList = () => {
   }, []);
 
   const filterByCategory = (categoryName: string) => {
+    setSelectedCategory(categoryName);
     const filteredCategory = recipes.filter((recipe) =>
       recipe.categories?.some(
         (recipeCategory) => recipeCategory.name === categoryName
@@ -98,7 +83,7 @@ export const RecipeList = () => {
             key={category.id}
             name={category.name}
             icon={category.icon}
-            id={category.id}
+            isSelected={selectedCategory === category.name}
             onClick={() => filterByCategory(category.name)}
           />
         ))}

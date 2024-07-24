@@ -1,0 +1,28 @@
+.category-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  border-radius: 100px;
+  border: 1px solid #a1aaa6;
+  gap: 20px;
+  width: 310px;
+  height: 68px;
+  flex-shrink: 0;
+  padding: 14px;
+  margin: 14px 0 14px 0;
+}
+
+.category-item-button label {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin: 0;
+}
+
+.category-item-button.selected {
+  background-color: #febd2f;
+}
