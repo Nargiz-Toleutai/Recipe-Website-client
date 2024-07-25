@@ -9,7 +9,7 @@
   height: auto;
 }
 
-.header h1 {
+/* .header h1 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,7 +20,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
+} */
 
 .footer {
   margin-top: 20px;

@@ -18,3 +18,9 @@
 .recipes-list h2 {
   margin: 0;
 }
+
+@media screen and (max-width: 400px) {
+  .recipes-list {
+    flex-direction: column;
+  }
+}

@@ -7,16 +7,16 @@ import Layout from "./Layout";
 
 const HomePage = () => {
   return (
-    <Layout>
+    <div className="home-page">
       <div className="header">
         <img src="/backgroundImages/home-page-img.svg" alt="home-page-img" />
         <h1>Home Chef Recipes</h1>
       </div>
       <RecipeList />
-      <div className="footer">
+      {/* <div className="footer">
         <AddRecipeButton />
-      </div>
-    </Layout>
+      </div> */}
+    </div>
   );
 };
 
