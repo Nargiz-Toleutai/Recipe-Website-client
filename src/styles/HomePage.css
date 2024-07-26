@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 .home-page-body {
