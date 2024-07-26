@@ -12,10 +12,13 @@ const HomePage = () => {
         <img src="/backgroundImages/home-page-img.svg" alt="home-page-img" />
         <h1>Home Chef Recipes</h1>
       </div>
-      <div className="main">
+      <div className="home-page-body">
         <RecipeList />
       </div>
-      <div className="footer">{/* <AddRecipeButton /> */}</div>
+
+      <div className="footer">
+        <AddRecipeButton />
+      </div>
     </div>
   );
 };
