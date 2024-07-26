@@ -55,6 +55,7 @@ const RecipeDetails = () => {
 
         <div className="recipe-page-body">
           <div className="recipe-page-body-header">
+            <h1>{recipe.name}</h1>
             <div className="serves">
               <h4>Serves</h4>
               <IconMultiplier
@@ -67,13 +68,16 @@ const RecipeDetails = () => {
               {recipe.preptime}
             </div>
           </div>
-          <div className="instructions">
-            <h2>Instructions</h2>
-            <p>{recipe.instructions}</p>
-          </div>
-          <div className="ingredients">
-            <h2>Ingredients</h2>
-            <p>{recipe.ingredients}</p>
+          <hr />
+          <div className="recipe-description">
+            <div className="instructions">
+              <h2>Instructions</h2>
+              <p>{recipe.instructions}</p>
+            </div>
+            <div className="ingredients">
+              <h2>Ingredients</h2>
+              <p>{recipe.ingredients}</p>
+            </div>
           </div>
         </div>
         <AddComment recipeId={recipe.id} fetchRecipe={getRecipeFromApi} />

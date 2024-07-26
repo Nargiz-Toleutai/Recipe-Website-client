@@ -40,6 +40,15 @@ body {
   }
 }
 
+hr {
+  border: none;
+  border-top: 2px dashed grey;
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+}
+
 @media screen and (max-width: 400px) {
   .navigation-container h1 {
     font-size: 14px;

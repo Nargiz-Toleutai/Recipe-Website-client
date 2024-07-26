@@ -10,6 +10,13 @@
 .recipe-page-body {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0px 7px 24px 0px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  padding: 3rem;
 }
 
 .header {
@@ -35,7 +42,7 @@
 }
 
 .recipe-info h3,
-h1 {
+.recipe-info h1 {
   color: white;
   margin-bottom: 20px;
 
@@ -68,6 +75,12 @@ h1 {
   font-weight: 400;
   line-height: normal;
   color: white;
+}
+
+.recipe-description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 .footer {
