@@ -56,16 +56,18 @@ const RecipeDetails = () => {
         <div className="recipe-page-body">
           <div className="recipe-page-body-header">
             <h1>{recipe.name}</h1>
-            <div className="serves">
-              <h4>Serves</h4>
-              <IconMultiplier
-                amount={recipe.serves ? recipe.serves : 1}
-                icon={"/serves.svg"}
-              />
-            </div>
-            <div className="preptime">
-              <h4>Prep Time</h4>
-              {recipe.preptime}
+            <div className="details">
+              <div className="serves">
+                <h4>Serves</h4>
+                <IconMultiplier
+                  amount={recipe.serves ? recipe.serves : 1}
+                  icon={"/serves.svg"}
+                />
+              </div>
+              <div className="preptime">
+                <h4>Prep Time</h4>
+                {recipe.preptime}
+              </div>
             </div>
           </div>
           <hr />

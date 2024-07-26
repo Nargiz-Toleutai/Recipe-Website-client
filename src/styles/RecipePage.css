@@ -19,9 +19,9 @@
   padding: 3rem;
 }
 
-.header {
+.recipe-page-body-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   position: relative; /* Ensure that the pseudo-element is positioned relative to this element */
@@ -81,6 +81,19 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+}
+
+.details {
+  display: flex;
+  gap: 3rem;
+}
+
+.serves {
+  display: flex;
+}
+
+.preptime {
+  display: flex;
 }
 
 .footer {
