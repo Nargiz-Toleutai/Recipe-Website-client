@@ -1,22 +1,12 @@
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import { Recipe } from "./Recipe/RecipeList";
-import RecipeItem from "./Recipe/RecipeItem";
-import { Comment } from "./Recipe/RecipeList";
 import RecipeCard from "./buttons/RecipeCard";
+import { calculateAverageRating } from "../../utils";
 
 interface SearchInputProps {
   recipes: Recipe[];
   onSearch: (query: string) => void;
 }
-
-const calculateAverageRating = (comments: Comment[]): number => {
-  if (comments.length === 0) return 0;
-  const totalRating = comments.reduce(
-    (acc, comment) => acc + comment.rating,
-    0
-  );
-  return totalRating / comments.length;
-};
 
 const Recipes = ({ recipes }: SearchInputProps) => {
   const [inputValue, setValue] = useState<string>("");

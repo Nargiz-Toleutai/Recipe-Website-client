@@ -6,6 +6,7 @@ import NavigationBar from "@/components/NavBar/NavBar";
 import { Recipe } from "@/components/Recipe/RecipeList";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
+import { calculateAverageRating } from "../../../utils";
 
 // {recipe.preptime} need to change format (1h 15min)
 
@@ -32,15 +33,24 @@ const RecipeDetails = () => {
     return <div>Loading ...</div>;
   }
 
-  console.log(recipe);
-
   return (
     <Layout>
       <div className="recipe-page">
         <div className="header">
           <img src={recipe.image_URL} />
+        </div>
+
+        <div className="recipe-info">
           <h1>{recipe.name}</h1>
           <h3>{recipe.categories?.map((category) => category.name)}</h3>
+          <div className="recipe-rating">
+            {recipe.comments?.length && (
+              <IconMultiplier
+                amount={calculateAverageRating(recipe.comments)}
+                icon={"/review-star.svg"}
+              />
+            )}
+          </div>
         </div>
 
         <div className="recipe-page-body">
