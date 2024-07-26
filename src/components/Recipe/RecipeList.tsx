@@ -75,7 +75,7 @@ const RecipeList = () => {
   };
 
   return (
-    <div className="recipes-list">
+    <div className="main">
       <div className="categories">
         <h2>Recipes</h2>
         {categories.map((category) => (

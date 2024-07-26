@@ -50,9 +50,7 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
               }
               id={recipe.id}
               image={
-                recipe.image_URL
-                  ? recipe.image_URL
-                  : "/backgroundImages/img-not-found.jpg"
+                recipe.image_URL ? "" : "/backgroundImages/img-not-found.jpg" // recipe.image_URL
               }
             />
           ))}

@@ -12,19 +12,21 @@ const RecipeCard = ({
 }: RecipeItemProps) => {
   return (
     <Link href={`/recipes/${id}`} className="recipe-card">
-      <div className="recipe-img">
+      <div className="recipe-img-container">
         <img src={image} alt={`${name}-img`} />
       </div>
-      <div className="recipe-item-info-block">
+      <div className="recipe-content">
         <h3>{name}</h3>
         <IconMultiplier amount={rating} icon={"/review-star.svg"} />
       </div>
-      {preptime && <div>Prep Time {preptime}</div>}
-      {serves !== undefined && (
-        <div>
-          Serves <IconMultiplier amount={serves} icon={"/serves.svg"} />
-        </div>
-      )}
+      <div className="card-info">
+        {preptime && <div className="prep-time">Prep Time {preptime}</div>}
+        {serves !== undefined && (
+          <div className="serves">
+            Serves <IconMultiplier amount={serves} icon={"/serves.svg"} />
+          </div>
+        )}
+      </div>
     </Link>
   );
 };

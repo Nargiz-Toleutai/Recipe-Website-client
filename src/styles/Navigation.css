@@ -1,69 +1,83 @@
-.navigation-container {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 40%;
-  z-index: 99999;
-  position: absolute;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Serif;
+}
+nav {
+  position: fixed;
+  z-index: 99;
   width: 100%;
 }
-
-.navigation-items {
+nav .navigation-container {
+  position: relative;
+  max-width: 1300px;
+  padding: 0px 30px;
+  height: 70px;
+  line-height: 70px;
+  margin: auto;
   display: flex;
   align-items: center;
-  flex-direction: row;
   justify-content: space-between;
-  gap: 10px;
 }
-
 .navigation-container h1 {
   font-size: 36px;
   font-weight: 400;
-  line-height: 50.83px;
 }
-ul {
-  padding: 0;
+.navigation-container .nav-links {
+  display: inline-flex;
+  gap: 2rem;
 }
-
-.navigation-items li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 4rem;
-  height: 4rem;
+.nav-links li {
   list-style: none;
 }
-
-.navigation-items li:hover {
-  background-color: red;
-  width: 174px;
-  height: 56px;
-  border-radius: 30px;
-}
-
-a {
-  text-decoration: none;
-  font-family: serif;
+.nav-links li a {
   color: black;
-  font-weight: 400;
+  text-decoration: none;
   font-size: 24px;
+  font-weight: 400;
+  padding: 5px 35px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.nav-links li a:hover {
+  background: white;
+  border-radius: 20px;
 }
 
-button {
-  border: none;
-  background-color: transparent;
+.nav-links li:hover {
+  transition: all 0.3s ease;
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* button:hover {
-  background-color: red;
-  width: 174px;
-  height: 56px;
-} */
+@media screen and (max-width: 970px) {
+  .wrapper {
+    display: block;
+  }
+  .wrapper .nav-links {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    max-width: 350px;
+    top: 0;
+    left: -100%;
+    background: #242526;
+    display: block;
+    padding: 50px 10px;
+    line-height: 50px;
+    overflow-y: auto;
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
+    transition: all 0.3s ease;
+  }
 
-@media screen and (max-width: 600px) {
-  .navigation-items li {
-    width:;
+  .nav-links li {
+    margin: 15px 10px;
+  }
+  .nav-links li a {
+    padding: 0 20px;
+    display: block;
+    font-size: 20px;
   }
 }

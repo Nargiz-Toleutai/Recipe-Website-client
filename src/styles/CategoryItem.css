@@ -1,4 +1,4 @@
-.category-item-button {
+/* .category-item-button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -26,3 +26,9 @@
 .category-item-button.selected {
   background-color: #febd2f;
 }
+
+@media screen and (max-width: 1000px) {
+  .category-item-button {
+    width: 100%;
+  }
+} */
