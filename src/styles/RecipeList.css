@@ -18,21 +18,34 @@
 .recipes-list-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+
   padding: 20px;
   width: 100%;
 }
 
 .categories {
   flex: 1;
-  margin-right: 20px;
+  width: 100%;
+  margin-right: 30px;
 }
 
 .recipes {
   flex: 3;
+  width: 100%;
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 900px) {
   .recipes-list-container {
     flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 970px) {
+  .categories {
+    max-width: 300px;
+  }
+  .recipes {
+    max-width: 60%;
   }
 }

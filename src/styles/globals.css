@@ -1,9 +1,3 @@
-:root {
-  --menu-width: 37.5em;
-  --items: 4;
-  --item-width: calc(var(--menu-width) / var(--items));
-}
-
 body {
   font-family: Serif;
   color: black;
@@ -32,7 +26,7 @@ body {
   gap: 2rem;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1066px) {
   .navigation-container h1 {
     font-size: 14px;
     font-weight: 400;
