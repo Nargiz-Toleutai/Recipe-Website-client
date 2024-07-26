@@ -1,4 +1,4 @@
-/* .category-item-button {
+.category-item-button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -23,12 +23,21 @@
   margin: 0;
 }
 
-.category-item-button.selected {
-  background-color: #febd2f;
+.category-item-button h3 {
+  font-family: "Helvetica Neue";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.category-item-button.selected,
+.category-item-button:hover {
+  background-color: #ffd700;
 }
 
 @media screen and (max-width: 1000px) {
   .category-item-button {
     width: 100%;
   }
-} */
+}

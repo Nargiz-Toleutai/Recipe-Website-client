@@ -19,6 +19,7 @@ nav .navigation-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  backdrop-filter: blur(10px);
 }
 .navigation-container h1 {
   font-size: 36px;

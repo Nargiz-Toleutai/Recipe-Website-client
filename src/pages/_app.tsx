@@ -5,7 +5,7 @@ import "@/styles/AddComment.css";
 import "@/styles/Navigation.css";
 import "@/styles/HomePage.css";
 import "@/styles/RecipeList.css";
-import "@/styles/RecipeItem.css";
+import "@/styles/RecipeCard.css";
 import "@/styles/CategoryItem.css";
 import "@/styles/SearchInput.css";
 import "../fontAwesome";

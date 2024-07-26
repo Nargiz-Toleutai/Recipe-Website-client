@@ -18,7 +18,7 @@ const calculateAverageRating = (comments: Comment[]): number => {
   return totalRating / comments.length;
 };
 
-const SearchInput = ({ recipes }: SearchInputProps) => {
+const Recipes = ({ recipes }: SearchInputProps) => {
   const [inputValue, setValue] = useState<string>("");
 
   return (
@@ -40,7 +40,7 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
             }
           })
           .map((recipe) => (
-            <RecipeItem
+            <RecipeCard
               key={recipe.id}
               name={recipe.name}
               rating={
@@ -50,7 +50,9 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
               }
               id={recipe.id}
               image={
-                recipe.image_URL ? "" : "/backgroundImages/img-not-found.jpg" // recipe.image_URL
+                recipe.image_URL
+                  ? recipe.image_URL
+                  : "/backgroundImages/img-not-found.jpg"
               }
             />
           ))}
@@ -59,4 +61,4 @@ const SearchInput = ({ recipes }: SearchInputProps) => {
   );
 };
 
-export default SearchInput;
+export default Recipes;

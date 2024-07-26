@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SearchInput from "../SearchInput";
 
 import CategoryItem, { Category } from "../CategoryItem";
+import Recipes from "../Recipes";
 
 export interface Recipe {
   id: number;
@@ -89,7 +89,7 @@ const RecipeList = () => {
         ))}
       </div>
       <div className="recipes">
-        <SearchInput recipes={filteredRecipes} onSearch={handleInputChange} />
+        <Recipes recipes={filteredRecipes} onSearch={handleInputChange} />
       </div>
     </div>
   );
