@@ -1,0 +1,20 @@
+.recipe-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  color: black;
+}
+
+.recipe-button h1 {
+  position: absolute;
+  font-size: 4vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.recipe-button img {
+  width: 90%;
+}

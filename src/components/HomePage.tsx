@@ -15,7 +15,9 @@ const HomePage = () => {
 
       <RecipeList />
 
-      <div className="footer">{/* <AddRecipeButton /> */}</div>
+      <div className="footer">
+        <AddRecipeButton />
+      </div>
     </div>
   );
 };
