@@ -9,6 +9,7 @@ import "@/styles/RecipeCard.css";
 import "@/styles/CategoryItem.css";
 import "@/styles/SearchInput.css";
 import "@/styles/AddRecipeButton.css";
+import "@/styles/RecipePage.css";
 import "../fontAwesome";
 import type { AppProps } from "next/app";
 

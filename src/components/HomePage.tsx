@@ -12,16 +12,12 @@ const HomePage = () => {
         <img src="/backgroundImages/home-page-img.svg" alt="home-page-img" />
         <h1>Home Chef Recipes</h1>
       </div>
-
       <RecipeList />
-
       <div className="footer">
         <AddRecipeButton />
       </div>
     </div>
   );
 };
-
-// className="header"
 
 export default HomePage;
