@@ -30,6 +30,11 @@
   overflow: hidden; /* Ensure any overflow is hidden */
 }
 
+.recipe-page-body-header h1 {
+  color: #febd2f;
+  margin-bottom: 1rem;
+}
+
 .recipe-info {
   position: absolute;
   display: flex;
@@ -81,6 +86,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  margin-top: 1rem;
 }
 
 .details {
