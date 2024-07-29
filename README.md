@@ -1,6 +1,6 @@
 # Home Chef Recipes
 
-![Image](client/public/image.png)
+<img align="centre" alt="img" src="https://github.com/Nargiz-Toleutai/Recipe-Website-client/blob/main/public/image.png" width="360px"/>
 
 Home Chef Recipes is an interactive platform that allows users to create, modify, and delete their own recipes. Users can also comment on and rate (like or dislike) both their own and others' recipes. This community-driven site enables food enthusiasts to share and discover new culinary ideas.
 
