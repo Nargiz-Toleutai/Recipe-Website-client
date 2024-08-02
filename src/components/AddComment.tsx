@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import StarsRating from "./StarsRating/StarsRating";
+import Input from "./Input";
 
 interface AddCommentProps {
   recipeId: number;
@@ -43,27 +44,30 @@ const AddComment = ({ recipeId, fetchRecipe }: AddCommentProps) => {
 
   return (
     <form onSubmit={onSubmitTheForm} className="comment-form">
-      <label htmlFor="name">Name</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        onChange={(event) => setUserName(event.target.value)}
-        value={userName}
-      />
-      <StarsRating
-        onChange={(e) => setRating(Number(e.target.value))}
-        value={rating}
-      />
-      <label htmlFor="review">Review</label>
-      <input
-        type="text"
-        name="review"
-        id="review"
-        onChange={(event) => setReview(event.target.value)}
-        value={review}
-      />
-      <button type="submit">Save</button>
+      <div className="name-and-rating-panel">
+        <Input
+          onChange={(event) => setUserName(event.target.value)}
+          name={"name"}
+          id={"name"}
+          type={"text"}
+          htmlFor={"name"}
+        />
+        <StarsRating
+          onChange={(e) => setRating(Number(e.target.value))}
+          value={rating}
+        />
+      </div>
+      <div className="review-panel">
+        <label htmlFor="review">Review</label>
+        <input
+          type="text"
+          name="review"
+          id="review"
+          onChange={(event) => setReview(event.target.value)}
+          value={review}
+        />
+        <button type="submit">Save</button>
+      </div>
     </form>
   );
 };

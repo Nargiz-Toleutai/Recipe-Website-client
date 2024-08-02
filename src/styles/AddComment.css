@@ -1,7 +1,8 @@
-.comment-form {
+/* .comment-form {
   border-radius: 30px;
   background: #fff;
   box-shadow: 0px 7px 24px 0px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
 input {
@@ -14,4 +15,77 @@ input {
   border-radius: 10px;
   border: 1px solid rgba(13, 13, 13, 0.25);
   background: #fff;
+} */
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 35rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+}
+
+.comment-form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.comment-form .name-and-rating-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.comment-form button {
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f4c542;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #e2a732;
+}
+
+.comment-form .stars-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.comment-form .stars-rating input[type="radio"] {
+  display: none;
+}
+
+.comment-form .stars-rating label {
+  font-size: 24px;
+  color: orange;
+  cursor: pointer;
+}
+
+.comment-form .stars-rating input[type="radio"]:checked ~ label {
+  color: #f4c542;
+}
+
+.comment-form .stars-rating label:hover,
+.comment-form .stars-rating label:hover ~ label {
+  color: #e2a732;
 }

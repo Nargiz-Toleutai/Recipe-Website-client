@@ -1,4 +1,5 @@
 .recipe-card {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-decoration: none;
@@ -60,6 +61,16 @@
   padding: 5px 20px;
 
   border-radius: 20px;
+}
+
+.recipe-add-comment {
+  position: absolute;
+  top: 140%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 @media screen and (max-width: 600px) {

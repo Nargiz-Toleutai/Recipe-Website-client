@@ -12,6 +12,11 @@
   position: relative;
 }
 
+.star-container label {
+  margin: 0;
+  padding: 0;
+}
+
 .star-container input {
   display: none;
 }

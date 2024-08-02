@@ -82,7 +82,11 @@ const RecipeDetails = () => {
             </div>
           </div>
         </div>
-        <AddComment recipeId={recipe.id} fetchRecipe={getRecipeFromApi} />
+        <div className="recipe-add-comment">
+          <h1>Add a Comment</h1>
+          <AddComment recipeId={recipe.id} fetchRecipe={getRecipeFromApi} />
+        </div>
+
         <div className="footer">
           {recipe.comments?.length && (
             <CommentCard comments={recipe.comments} />
