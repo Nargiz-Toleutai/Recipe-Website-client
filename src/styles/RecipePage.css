@@ -8,6 +8,8 @@
 }
 
 .recipe-page-body {
+  position: absolute;
+  top: 60%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
