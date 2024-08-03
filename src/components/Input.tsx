@@ -4,13 +4,20 @@ interface InputProps {
   id: string;
   type: string;
   htmlFor: string;
+  value: string;
 }
 
-const Input = ({ name, id, type, htmlFor, onChange }: InputProps) => {
+const Input = ({ name, id, type, htmlFor, value, onChange }: InputProps) => {
   return (
     <div className="general-input">
-      <label htmlFor={htmlFor}>Name</label>
-      <input id={id} name={name} type={type} onChange={onChange} value={name} />
+      <label htmlFor={htmlFor}>{name}</label>
+      <input
+        id={id}
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+      />
     </div>
   );
 };

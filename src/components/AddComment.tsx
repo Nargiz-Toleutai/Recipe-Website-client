@@ -47,10 +47,11 @@ const AddComment = ({ recipeId, fetchRecipe }: AddCommentProps) => {
       <div className="name-and-rating-panel">
         <Input
           onChange={(event) => setUserName(event.target.value)}
-          name={"name"}
+          name={"Name"}
           id={"name"}
           type={"text"}
           htmlFor={"name"}
+          value={userName}
         />
         <StarsRating
           onChange={(e) => setRating(Number(e.target.value))}
@@ -58,12 +59,12 @@ const AddComment = ({ recipeId, fetchRecipe }: AddCommentProps) => {
         />
       </div>
       <div className="review-panel">
-        <label htmlFor="review">Review</label>
-        <input
-          type="text"
-          name="review"
-          id="review"
-          onChange={(event) => setReview(event.target.value)}
+        <Input
+          onChange={(event) => setUserName(event.target.value)}
+          name={"Review"}
+          id={"review"}
+          type={"text"}
+          htmlFor={"review"}
           value={review}
         />
         <button type="submit">Save</button>
