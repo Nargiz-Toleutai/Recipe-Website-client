@@ -74,10 +74,6 @@
   }
 }
 @media (max-width: 600px) {
-  .comment-form {
-    padding: 1rem;
-  }
-
   .comment-form .name-and-rating-panel {
     flex-direction: column;
     gap: 1rem;

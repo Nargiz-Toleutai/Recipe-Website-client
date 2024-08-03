@@ -73,6 +73,10 @@
   gap: 2rem;
 }
 
+.recipe-add-comment h1 {
+  font-size: 4vh;
+}
+
 @media screen and (max-width: 600px) {
   .recipe-card {
     width: 100%;
