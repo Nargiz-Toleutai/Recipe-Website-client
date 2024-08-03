@@ -7,19 +7,19 @@
   scroll-behavior: smooth;
 }
 
-.home-page-body {
+.home-page .home-page-body {
   display: flex;
   flex-direction: column;
 }
 
-.footer {
+.home-page .footer {
   margin-top: 20px;
   text-align: center;
   width: 100%;
 }
 
 @media screen and (max-width: 970px) {
-  .header h1 {
+  .home-page .header h1 {
     font-size: 30px;
     font-style: normal;
     font-weight: 400;

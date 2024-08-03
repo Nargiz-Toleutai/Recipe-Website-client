@@ -18,13 +18,14 @@ const formatDate = (dateTime: string) => {
 const CommentCard = ({ comments }: CommentsProps) => {
   return (
     <div className="comments">
-      <h3>Comments</h3>
       {comments.map((comment) => (
-        <div key={comment.id}>
+        <div key={comment.id} className="comment-details">
           <strong>{comment.name}</strong>
-          <p>{formatDate(comment.createdAt.toString())}</p>
+          <h3>{formatDate(comment.createdAt.toString())}</h3>
           <p>{comment.review}</p>
-          <IconMultiplier amount={comment.rating} icon="/review-star.svg" />
+          <div className="comment-rating">
+            <IconMultiplier amount={comment.rating} icon="/review-star.svg" />
+          </div>
         </div>
       ))}
     </div>

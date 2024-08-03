@@ -64,8 +64,8 @@
 }
 
 .recipe-add-comment {
-  position: absolute;
-  top: 140%;
+  /* position: absolute;
+  top: 140%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
