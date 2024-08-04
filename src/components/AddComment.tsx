@@ -60,7 +60,7 @@ const AddComment = ({ recipeId, fetchRecipe }: AddCommentProps) => {
       </div>
       <div className="review-panel">
         <Input
-          onChange={(event) => setUserName(event.target.value)}
+          onChange={(event) => setReview(event.target.value)}
           name={"Review"}
           id={"review"}
           type={"text"}

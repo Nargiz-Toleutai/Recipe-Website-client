@@ -89,9 +89,11 @@ const RecipeDetails = () => {
 
         <div className="recipe-comments">
           <h1>Comments</h1>
-          {recipe.comments?.length && (
-            <CommentCard comments={recipe.comments} />
-          )}
+          <div className="recipe-comment-cards">
+            {recipe.comments?.length && (
+              <CommentCard comments={recipe.comments} />
+            )}
+          </div>
         </div>
       </div>
     </Layout>
