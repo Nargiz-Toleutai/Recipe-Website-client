@@ -87,14 +87,14 @@ const RecipeDetails = () => {
           <AddComment recipeId={recipe.id} fetchRecipe={getRecipeFromApi} />
         </div>
 
-        <div className="recipe-comments">
-          <h1>Comments</h1>
-          <div className="recipe-comment-cards">
-            {recipe.comments?.length && (
+        {recipe.comments?.length && (
+          <div className="recipe-comments">
+            <h1>Comments</h1>
+            <div className="recipe-comment-cards">
               <CommentCard comments={recipe.comments} />
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Layout>
   );

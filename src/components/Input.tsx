@@ -3,8 +3,8 @@ interface InputProps {
   name: string;
   id: string;
   type: string;
-  htmlFor: string;
-  value: string;
+  htmlFor?: string;
+  value?: string;
 }
 
 const Input = ({ name, id, type, htmlFor, value, onChange }: InputProps) => {

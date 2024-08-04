@@ -11,6 +11,7 @@
   flex-shrink: 0;
   padding: 14px;
   margin: 14px 0 14px 0;
+  background-color: transparent;
 }
 
 .category-item-button label {
@@ -33,7 +34,7 @@
 
 .category-item-button.selected,
 .category-item-button:hover {
-  background-color: #ffd700;
+  background-color: #febd2f;
 }
 
 @media screen and (max-width: 1000px) {

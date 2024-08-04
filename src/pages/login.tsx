@@ -1,10 +1,18 @@
+import Input from "@/components/Input";
+import Layout from "@/components/Layout";
 import NavigationBar from "@/components/NavBar/NavBar";
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useState } from "react";
+import * as z from "zod";
 
 interface User {
   id: number;
 }
+
+const loginValidation = z.object({
+  username: z.string().min(1, "Username is required"),
+  password: z.string().min(1, "Password is required"),
+});
 
 const LoginPage = ({ id }: User) => {
   const router = useRouter();
@@ -16,8 +24,9 @@ const LoginPage = ({ id }: User) => {
     }
   }, [router]);
 
-  const [userName, setUserName] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [userName, setUserName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errors, setErrors] = useState<z.ZodError | null>(null);
 
   const onSubmitTheForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,7 +34,14 @@ const LoginPage = ({ id }: User) => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData);
 
-    console.log("data", data);
+    const validationResult = loginValidation.safeParse(data);
+
+    if (!validationResult.success) {
+      setErrors(validationResult.error);
+      return;
+    }
+
+    setErrors(null);
 
     const result = await fetch("http://localhost:3001/login", {
       method: "POST",
@@ -42,37 +58,40 @@ const LoginPage = ({ id }: User) => {
   };
 
   return (
-    <div className="login-page">
-      <NavigationBar />
-      <img
-        src="/backgroundImages/login-page-background-img.svg"
-        alt="Login Page Background"
-      />
-      <form className="login-window" onSubmit={onSubmitTheForm}>
-        <h1>Login</h1>
-        <label>Username</label>
-        <input
-          type="text"
-          required={true}
-          onChange={(event) => setUserName(event.target.value)}
-          value={userName}
-          className="input"
-          name="username"
+    <Layout>
+      <div className="login-form">
+        <img
+          src="/backgroundImages/login-page-background-img.svg"
+          alt="Login Page Background"
         />
-        <label>Password</label>
-        <input
-          type="password"
-          required={true}
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          className="input"
-          name="password"
-        />
-        <button type="submit" className="login-button">
-          Login
-        </button>
-      </form>
-    </div>
+        <form className="login" onSubmit={onSubmitTheForm}>
+          <h1>Login</h1>
+          {errors && (
+            <div className="error-messages">
+              {errors.errors.map((error) => (
+                <p key={error.path.join(".")}>{error.message}</p>
+              ))}
+            </div>
+          )}
+          <Input
+            onChange={(event) => setUserName(event.target.value)}
+            name={"Username"}
+            id={"username"}
+            type={"text"}
+            htmlFor={""}
+            value={userName}
+          />
+          <Input
+            onChange={(event) => setPassword(event.target.value)}
+            name={"Password"}
+            id={"password"}
+            type={"password"}
+            value={password}
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </Layout>
   );
 };
 
