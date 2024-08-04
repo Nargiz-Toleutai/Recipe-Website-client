@@ -12,7 +12,7 @@ const NavigationBar = () => {
   return (
     <nav>
       <div className="navigation-container">
-        <h1>🥘 HomeChefRecipes</h1>
+        <h1>🥘HomeChefRecipes</h1>
         <ul className="nav-links">
           <li className="navigation-item">
             <Link href="/">Home</Link>
