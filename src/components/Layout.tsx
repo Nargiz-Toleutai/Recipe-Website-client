@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, useEffect } from "react";
-import NavigationBar from "./NavBar/NavBar";
-import MobileMenu from "./NavBar/Menu/Example";
+import Navigation from "./Navigation/Navigation";
+import MobileMenu from "./Navigation/Menu/Example";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,13 +15,8 @@ const Layout: React.FC<LayoutProps> = ({ children, imgUrl }) => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Initial check
     handleResize();
-
-    // Add event listener
     window.addEventListener("resize", handleResize);
-
-    // Clean up event listener
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -32,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children, imgUrl }) => {
         backgroundImage: imgUrl ? `url("${imgUrl}")` : undefined,
       }}
     >
-      {isMobile ? <MobileMenu /> : <NavigationBar />}
+      {isMobile ? <MobileMenu /> : <Navigation />}
       {children}
     </div>
   );

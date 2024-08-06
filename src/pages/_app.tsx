@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import "@/styles/StarsRating.css";
 import "@/styles/LoginPage.css";
 import "@/styles/AddComment.css";
-import "@/styles/Navigation.css";
+import "@/styles/Navigation.scss";
 import "@/styles/HomePage.css";
 import "@/styles/RecipeList.css";
 import "@/styles/RecipeCard.css";

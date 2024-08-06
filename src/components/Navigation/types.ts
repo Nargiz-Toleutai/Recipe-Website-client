@@ -3,4 +3,5 @@ export interface NavigationLinkProps {
   title: string;
   to: string;
   selected?: boolean;
+  tokenRequired?: boolean;
 }
