@@ -19,7 +19,7 @@ const Navigation = () => {
 
   const links: NavigationLinkProps[] = useMemo(
     () => [
-      { id: "home", title: "Home", to: "/" },
+      { id: "home", title: "Home", to: "/", tokenRequired: null },
       {
         id: "dashboard",
         title: "Dashboard",
@@ -38,8 +38,10 @@ const Navigation = () => {
         <h1>🥘HomeChefRecipes</h1>
         <ul className={b("nav-links")}>
           {links
-            .filter((link) =>
-              token ? link.tokenRequired : !link.tokenRequired
+            .filter(
+              (link) =>
+                link.tokenRequired === null ||
+                (token ? link.tokenRequired : !link.tokenRequired)
             )
             .map((link) => (
               <li key={link.id} className="navigation-item">

@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import Navigation from "./Navigation/Navigation";
-import MobileMenu from "./Navigation/Menu/Example";
+import BurgerMenu from "./Navigation/BurgerMenu/BurgerMenu";
 
 interface LayoutProps {
   children: ReactNode;
@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children, imgUrl }) => {
         backgroundImage: imgUrl ? `url("${imgUrl}")` : undefined,
       }}
     >
-      {isMobile ? <MobileMenu /> : <Navigation />}
+      {isMobile ? <BurgerMenu /> : <Navigation />}
       {children}
     </div>
   );

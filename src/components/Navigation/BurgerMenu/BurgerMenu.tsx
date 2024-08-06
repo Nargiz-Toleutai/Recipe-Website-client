@@ -3,7 +3,10 @@ import { useRef } from "react";
 import { motion, sync, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimentions";
 import { MenuToggle } from "./MenuToggle";
-import { Navigation } from "./Navigation";
+import { BurgerMenuNavigation } from "./BurgerMenuNavigation";
+import block from "bem-cn-lite";
+
+const b = block("burger-menu");
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -25,7 +28,7 @@ const sidebar = {
   },
 };
 
-const MobileMenu = () => {
+const BurgerMenu = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -36,12 +39,13 @@ const MobileMenu = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
+      className={b()}
     >
       <motion.div className="background" variants={sidebar} />
-      <Navigation />
+      <BurgerMenuNavigation />
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );
 };
 
-export default MobileMenu;
+export default BurgerMenu;

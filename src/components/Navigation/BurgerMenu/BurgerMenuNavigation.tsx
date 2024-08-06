@@ -1,6 +1,9 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
+import block from "bem-cn-lite";
+
+const b = block("burger-menu-navigation");
 
 const variants = {
   open: {
@@ -11,8 +14,8 @@ const variants = {
   },
 };
 
-export const Navigation = () => (
-  <motion.ul variants={variants}>
+export const BurgerMenuNavigation = () => (
+  <motion.ul variants={variants} className={b()}>
     {itemIds.map((i) => (
       <MenuItem i={i} key={i} />
     ))}
