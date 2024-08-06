@@ -1,7 +1,9 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { MenuItem } from "./MenuItem";
 import block from "bem-cn-lite";
+import { useEffect, useMemo, useState } from "react";
+import { NavigationLinkProps } from "../types";
+import { MenuItem } from "./MenuItem";
 
 const b = block("burger-menu-navigation");
 
@@ -14,12 +16,39 @@ const variants = {
   },
 };
 
-export const BurgerMenuNavigation = () => (
-  <motion.ul variants={variants} className={b()}>
-    {itemIds.map((i) => (
-      <MenuItem i={i} key={i} />
-    ))}
-  </motion.ul>
-);
+export const BurgerMenuNavigation: React.FC = () => {
+  const [token, setToken] = useState<string | null>(null);
 
-const itemIds = [0, 1, 2, 3, 4];
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
+
+  const links: NavigationLinkProps[] = useMemo(
+    () => [
+      { id: "home", title: "Home", to: "/", tokenRequired: null },
+      {
+        id: "dashboard",
+        title: "Dashboard",
+        to: "/dashboard",
+        tokenRequired: true,
+      },
+      { id: "login", title: "Login", to: "/login", tokenRequired: false },
+      { id: "logout", title: "Log out", to: "/logout", tokenRequired: true },
+    ],
+    []
+  );
+
+  const filteredLinks = links.filter(
+    (link) =>
+      link.tokenRequired === null ||
+      (token ? link.tokenRequired : !link.tokenRequired)
+  );
+
+  return (
+    <motion.ul variants={variants} className={b()}>
+      {filteredLinks.map((link, index) => (
+        <MenuItem key={link.id} {...link} />
+      ))}
+    </motion.ul>
+  );
+};

@@ -1,5 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import { NavigationLinkProps } from "../types";
+import NavigationLink from "../NavigationLink";
 
 const variants = {
   open: {
@@ -18,10 +20,8 @@ const variants = {
   },
 };
 
-const colors = ["#DED727 ", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-
-export const MenuItem = ({ i }) => {
-  const style = { border: `2px solid ${colors[i]}` };
+export const MenuItem = ({ id, title, to }: NavigationLinkProps) => {
+  const style = { border: `2px solid #fdbd2f` };
   return (
     <motion.li
       variants={variants}
@@ -29,7 +29,7 @@ export const MenuItem = ({ i }) => {
       whileTap={{ scale: 0.95 }}
     >
       <div className="icon-placeholder" style={style} />
-      <p>HERE</p>
+      <NavigationLink id={id} title={title} to={to} />
       <div className="text-placeholder" style={style} />
     </motion.li>
   );

@@ -13,8 +13,28 @@ $breakpoint-extra-small: 400px;
   will-change: transform;
   // transform: translateX(-100%);
 
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    transition: background 0.3s ease;
+  }
+
+  .background.open {
+    background: #febd2f;
+  }
+
   .burger-menu-navigation {
-    z-index: 99;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 
   ul {
@@ -65,7 +85,9 @@ $breakpoint-extra-small: 400px;
   .menu-btn {
     outline: none;
     border: none;
-
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     cursor: pointer;
     position: absolute;
     top: 18px;

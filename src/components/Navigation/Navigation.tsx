@@ -1,5 +1,4 @@
 import block from "bem-cn-lite";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import NavigationLink from "./NavigationLink";
@@ -7,14 +6,12 @@ import { NavigationLinkProps } from "./types";
 
 const b = block("navigation");
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
-
   const router = useRouter();
 
   useEffect(() => {
-    const tokenFromStorage = localStorage.getItem("token");
-    setToken(tokenFromStorage);
+    setToken(localStorage.getItem("token"));
   }, []);
 
   const links: NavigationLinkProps[] = useMemo(
@@ -32,28 +29,28 @@ const Navigation = () => {
     []
   );
 
+  const filteredLinks = links.filter(
+    (link) =>
+      link.tokenRequired === null ||
+      (token ? link.tokenRequired : !link.tokenRequired)
+  );
+
   return (
     <nav className={b()}>
       <div className={b("container")}>
         <h1>🥘HomeChefRecipes</h1>
         <ul className={b("nav-links")}>
-          {links
-            .filter(
-              (link) =>
-                link.tokenRequired === null ||
-                (token ? link.tokenRequired : !link.tokenRequired)
-            )
-            .map((link) => (
-              <li key={link.id} className="navigation-item">
-                <NavigationLink
-                  selected={link.to === router.pathname}
-                  title={link.title}
-                  to={link.to}
-                  id={link.id}
-                  tokenRequired={link.tokenRequired}
-                />
-              </li>
-            ))}
+          {filteredLinks.map((link) => (
+            <li key={link.id} className="navigation-item">
+              <NavigationLink
+                selected={link.to === router.pathname}
+                title={link.title}
+                to={link.to}
+                id={link.id}
+                tokenRequired={link.tokenRequired}
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
