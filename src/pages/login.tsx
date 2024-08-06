@@ -1,6 +1,5 @@
 import Input from "@/components/Input";
 import Layout from "@/components/Layout";
-import NavigationBar from "@/components/NavBar/NavBar";
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useState } from "react";
 import * as z from "zod";
@@ -32,7 +31,10 @@ const LoginPage = ({ id }: User) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData);
+    const data = {
+      username: formData.get("username"),
+      password: formData.get("password"),
+    };
 
     const validationResult = loginValidation.safeParse(data);
 
@@ -78,7 +80,6 @@ const LoginPage = ({ id }: User) => {
             name={"Username"}
             id={"username"}
             type={"text"}
-            htmlFor={""}
             value={userName}
           />
           <Input

@@ -23,18 +23,24 @@ const NavigationBar = () => {
               <Link href="/login">Login</Link>
             </li>
           ) : (
-            <li className="navigation-item">
-              <Link href="/">
-                <button
-                  onClick={() => {
-                    setToken(null);
-                    localStorage.removeItem("token");
-                  }}
-                >
-                  Log out
-                </button>
-              </Link>
-            </li>
+            <>
+              <li className="navigation-item">
+                <Link href={`/dashboard/{user_id}`}>Dashboard</Link>
+              </li>
+              <li className="navigation-item">
+                <Link href="/">
+                  <button
+                    className="logout-button"
+                    onClick={() => {
+                      setToken(null);
+                      localStorage.removeItem("token");
+                    }}
+                  >
+                    Log out
+                  </button>
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </div>

@@ -42,21 +42,6 @@ textarea {
   font-size: 14pt;
 }
 
-button {
-  width: 100px;
-  padding: 10px;
-  border: none;
-  border-radius: 30px;
-  background-color: #f4c542;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #e2a732;
-}
-
 @media (min-width: 900px) {
   .comment-form {
     min-width: 800px;

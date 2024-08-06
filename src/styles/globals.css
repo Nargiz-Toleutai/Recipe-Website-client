@@ -68,6 +68,21 @@ hr {
   width: 100%;
 }
 
+button {
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f4c542;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e2a732;
+}
+
 @media screen and (max-width: 1066px) {
   .navigation-container h1 {
     font-size: 14px;
