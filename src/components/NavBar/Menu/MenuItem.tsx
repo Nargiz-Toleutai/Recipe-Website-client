@@ -29,6 +29,7 @@ export const MenuItem = ({ i }) => {
       whileTap={{ scale: 0.95 }}
     >
       <div className="icon-placeholder" style={style} />
+      <p>HERE</p>
       <div className="text-placeholder" style={style} />
     </motion.li>
   );
