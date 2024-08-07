@@ -44,7 +44,7 @@ textarea {
 
 @media (min-width: 900px) {
   .comment-form {
-    min-width: 800px;
+    width: 80%;
   }
 }
 
