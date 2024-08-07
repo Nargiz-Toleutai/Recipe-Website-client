@@ -39,11 +39,14 @@ const BurgerMenu = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className={b()}
+      className={b({ closed: !isOpen })}
     >
       <motion.div className="background" variants={sidebar} />
       <BurgerMenuNavigation />
-      <MenuToggle toggle={() => toggleOpen()} />
+      <MenuToggle
+        toggle={() => toggleOpen()}
+        className={isOpen ? "" : "_closed"}
+      />
     </motion.nav>
   );
 };

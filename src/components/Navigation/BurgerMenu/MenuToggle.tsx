@@ -1,5 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import block from "bem-cn-lite";
+
+const b = block("menu-btn");
 
 const Path = (props: any) => (
   <motion.path
@@ -11,8 +14,13 @@ const Path = (props: any) => (
   />
 );
 
-export const MenuToggle = ({ toggle }: any) => (
-  <button onClick={toggle} className="menu-btn">
+interface MenuToggleProps {
+  toggle: () => void;
+  className?: string;
+}
+
+export const MenuToggle = ({ toggle, className }: MenuToggleProps) => (
+  <button onClick={toggle} className={`${b()}${className || ""}`}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
         variants={{
