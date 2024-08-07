@@ -6,13 +6,9 @@ import { NavigationLinkProps } from "./types";
 
 const b = block("navigation-link");
 
-const NavigationLink: React.FC<NavigationLinkProps> = ({
-  title,
-  to,
-  selected,
-}) => {
+const NavigationLink = ({ title, to }: NavigationLinkProps) => {
   return (
-    <Link href={to} className={b({ selected })}>
+    <Link href={to} className={b()}>
       {title}
     </Link>
   );

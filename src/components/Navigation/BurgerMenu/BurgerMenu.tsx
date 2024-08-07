@@ -5,7 +5,6 @@ import { useDimensions } from "./use-dimentions";
 import { MenuToggle } from "./MenuToggle";
 import { BurgerMenuNavigation } from "./BurgerMenuNavigation";
 import block from "bem-cn-lite";
-import { BurgerMenuProps } from "./types";
 
 const b = block("burger-menu");
 
@@ -29,7 +28,7 @@ const sidebar = {
   },
 };
 
-const BurgerMenu = ({ selected }: BurgerMenuProps) => {
+const BurgerMenu = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
