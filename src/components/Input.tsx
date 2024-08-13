@@ -3,7 +3,7 @@ interface InputProps {
   name: string;
   id: string;
   type: string;
-  value?: string;
+  value?: string | number;
 }
 
 const Input = ({ name, id, type, value, onChange }: InputProps) => {
