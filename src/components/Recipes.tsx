@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Recipe } from "./Recipe/RecipeList";
+import { Recipe } from "./Recipe/types";
 import RecipeCard from "./buttons/RecipeCard";
 import { calculateAverageRating } from "../../utils";
 

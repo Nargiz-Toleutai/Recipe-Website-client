@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { Category } from "./types";
 
-export interface Category {
-  id?: number;
-  name: string;
-  icon: string;
+export interface CategoryItemProps extends Category {
   onClick: () => void;
   isSelected: boolean;
 }
 
-const CategoryItem = ({ name, icon, isSelected, onClick }: Category) => {
+const CategoryItem = ({
+  name,
+  icon,
+  isSelected,
+  onClick,
+}: CategoryItemProps) => {
   return (
     <button
       onClick={onClick}

@@ -1,27 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import CategoryItem, { Category } from "../CategoryItem";
+import { Category } from "../CategoryItem/types";
 import Recipes from "../Recipes";
-
-export interface Recipe {
-  id: number;
-  name: string;
-  serves?: number;
-  preptime?: number;
-  image_URL?: string;
-  comments?: Comment[];
-  categories?: Category[];
-  instructions?: string;
-  ingredients?: string;
-}
-
-export interface Comment {
-  id: number;
-  name: string;
-  review: string;
-  createdAt: Date;
-  rating: number;
-}
+import { Recipe } from "./types";
+import CategoryItem from "../CategoryItem/CategoryItem";
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -73,6 +55,8 @@ const RecipeList = () => {
     );
     setFilteredRecipes(filtered);
   };
+
+  console.log({ categories });
 
   return (
     <div className="recipes-list-container">

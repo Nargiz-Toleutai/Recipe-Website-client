@@ -1,8 +1,8 @@
 import AddComment from "@/components/AddComment";
 import IconMultiplier from "@/components/IconMultiplier";
-import NavigationBar from "@/components/NavBar/NavBar";
-import RecipeItem from "@/components/Recipe/RecipeItem";
-import { Recipe } from "@/components/Recipe/RecipeList";
+import NavigationBar from "@/components/Navigation/Navigation";
+import RecipeItem from "@/components/buttons/RecipeCard";
+import { Recipe } from "@/components/Recipe/types";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -25,14 +25,11 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await fetch(
-        `http://localhost:3001/dashboard/${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`http://localhost:3001/dashboard`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (!response.ok) {
         console.error("Failed to fetch recipes");
@@ -49,7 +46,7 @@ const Dashboard = () => {
   }, [userId]);
 
   if (!recipes) {
-    return <div>Loading ...</div>;
+    return <div>NO ...</div>;
   }
 
   const calculateAverageRating = (comments: RecipeComment[]): number => {

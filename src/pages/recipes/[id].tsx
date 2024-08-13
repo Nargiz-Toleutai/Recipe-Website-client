@@ -2,8 +2,8 @@ import AddComment from "@/components/AddComment";
 import CommentCard from "@/components/CommentCard";
 import IconMultiplier from "@/components/IconMultiplier";
 import Layout from "@/components/Layout";
-import NavigationBar from "@/components/NavBar/NavBar";
-import { Recipe } from "@/components/Recipe/RecipeList";
+import NavigationBar from "@/components/Navigation/Navigation";
+import { Recipe } from "@/components/Recipe/types";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { calculateAverageRating } from "../../../utils";
@@ -18,7 +18,6 @@ const RecipeDetails = () => {
   const getRecipeFromApi = useCallback(async () => {
     const response = await fetch(`http://localhost:3001/recipes/${id}`);
     const data = await response.json();
-    console.log("FETCHED RECIPE AGAIN!", data);
     setRecipe(data);
   }, [id]);
 
@@ -42,7 +41,7 @@ const RecipeDetails = () => {
 
         <div className="recipe-info">
           <h1>{recipe.name}</h1>
-          <h3>{recipe.categories?.map((category) => category.name)}</h3>
+          <h3>{recipe.categories?.map((category: any) => category.name)}</h3>
           <div className="recipe-rating">
             {recipe.comments?.length && (
               <IconMultiplier

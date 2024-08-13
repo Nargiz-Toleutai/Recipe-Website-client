@@ -50,7 +50,6 @@ const AddComment = ({ recipeId, fetchRecipe }: AddCommentProps) => {
           name={"Name"}
           id={"name"}
           type={"text"}
-          htmlFor={"name"}
           value={userName}
         />
         <StarsRating
@@ -64,7 +63,6 @@ const AddComment = ({ recipeId, fetchRecipe }: AddCommentProps) => {
           name={"Review"}
           id={"review"}
           type={"text"}
-          htmlFor={"review"}
           value={review}
         />
         <button type="submit">Save</button>
